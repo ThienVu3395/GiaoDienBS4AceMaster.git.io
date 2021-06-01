@@ -5,7 +5,43 @@
 }
 
 @section CSS{
- <link rel="stylesheet" type="text/css" href="./Assets/fullcalendar/main.css">
+    <link href="~/Assets/vpdt/fullCalendar/fullcalendar.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./Assets/fullcalendar/main.css">
+    <style>
+        .profile-activity:hover {
+            background-color: white !important;
+        }
+
+        .stetable {
+            text-align: center !important;
+            width: 20%;
+        }
+
+        .stetablehi {
+            text-align: center !important;
+            width: 10%;
+        }
+
+        @@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+            .stetable {
+                width: 200px;
+            }
+
+            .stetablehi {
+                width: 80px;
+            }
+        }
+
+        @@media only screen and (max-width: 1199px) {
+            .stetable {
+                width: 140px;
+            }
+
+            .stetablehi {
+                display: none;
+            }
+        }
+    </style>
 }
 
 <div class="page-header border-0 mb-3">
@@ -18,60 +54,398 @@
     </h1>
 </div>
 
-<!-- message to be displayed on touch devices -->
-<div id="alert-1" class="d-none alert bgc-white border-l-4 brc-purple-m1 shadow-sm" role="alert">
-    Touch a date slot and hold down to add a new event
-</div>
+<div id="lichtong" style="height: calc(100% - 50px); padding-top:2px;">
+    <div class="table-header">
+        <div class="">
+            <button class="fc-prev-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button" aria-label="prev">
+                <span class="fa fa-chevron-left"></span>
+            </button>
+            @*<span style="cursor:pointer" ng-click="tongnext()"><i class="fa fa-chevron-right"></i></span>*@
+            <button class="fc-next-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button" aria-label="next">
+                <span class="fa fa-chevron-right"></span>
+            </button>
+            @*<span style="cursor:pointer" ng-click="tongnow()">Tuần này</span>*@
+            <button disabled="" class="fc-today-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button">Today</button>
 
-<div class="row">
-    <div class="col-12 col-md-9" id='calendar-container'>
-        <div class="card acard">
-            <div class="card-body p-lg-4">
-                <div id='calendar' class="text-blue-d1"></div>
-            </div>
-        </div>
-    </div>
+            <h2 class="fc-toolbar-title">June 2021</h2>
 
-
-    <div class="col-12 col-md-3 mt-3 mt-md-4" id='external-events'>
-        <div class="bgc-secondary-l4 border-1 brc-secondary-l2 shadow-sm p-35 radius-1">
-            <p class="text-120 text-primary-d2">
-                Draggable Events
-            </p>
-
-            <p id="alert-2" class="alert bgc-white border-none border-l-4 brc-purple-m1">
-                Drag and drop the following events or click on a date slot to add a new event
-            </p>
-
-            <div>
-                <div class='fc-event badge bgc-blue-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-blue-d1 text-white text-95">
-                    My Event 1
-                </div>
-                <div class='fc-event badge bgc-green-d2 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-green-d2 text-white text-95">
-                    My Event 2
-                </div>
-                <div class='fc-event badge bgc-red-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-red-d1 text-white text-95">
-                    My Event 3
-                </div>
-                <div class='fc-event badge bgc-purple-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-purple-d1 text-white text-95">
-                    My Event 4
-                </div>
-                <div class='fc-event badge bgc-orange-d1 text-white border-0 py-2 text-90 mb-1 radius-2px' data-class="bgc-orange-d1 text-white text-95">
-                    My Event 5
-                </div>
+            <div class="btn-group">
+                <button class="fc-dayGridMonth-button btn btn-white btn-h-lighter-blue btn-a-blue active" type="button">month</button>
+                <button class="fc-timeGridWeek-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button">week</button>
+                <button class="fc-timeGridDay-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button">day</button>
+                <button class="fc-listWeek-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button">list</button>
             </div>
 
-            <label class="mt-2">
-                <input type="checkbox" id='drop-remove' class="mr-1" />
-                Remove after drop
-            </label>
+            @*<span style="cursor:pointer">
+                <i class="fa fa-calendar-o fa-stack-2x" style="margin-top:7px;margin-left:350px"></i>
+                <strong class="fa-stack-1x calendar-text" style="margin-top:6px;margin-left:350px">07</strong>
+            </span>
+            <span style="cursor:pointer">
+                <i class="fa fa-calendar-o fa-stack-2x" style="margin-top:7px;margin-left:400px"></i>
+                <strong class="fa-stack-1x calendar-text" style="margin-top:6px;margin-left:400px">30</strong>
+            </span>*@
         </div>
-
+        @*<span style="cursor:pointer" ng-click="tongpre()"><i class="fa fa-chevron-left"></i></span>*@
+        @*<div class="fc-header-toolbar fc-toolbar">
+            <div class="btn-group">
+                <button class="fc-prev-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button" aria-label="prev">
+                    <span class="fa fa-chevron-left"></span>
+                </button>
+                <button class="fc-next-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button" aria-label="next">
+                    <span class="fa fa-chevron-right"></span>
+                </button>
+            </div>
+            <button disabled="" class="fc-today-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button">today</button>
+            <div class="fc-toolbar-chunk"><h2 class="fc-toolbar-title">June 2021</h2></div>
+            <div class="fc-toolbar-chunk">
+                <div class="btn-group">
+                    <button class="fc-dayGridMonth-button btn btn-white btn-h-lighter-blue btn-a-blue active" type="button">month</button>
+                    <button class="fc-timeGridWeek-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button">week</button>
+                    <button class="fc-timeGridDay-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button">day</button>
+                    <button class="fc-listWeek-button btn btn-white btn-h-lighter-blue btn-a-blue" type="button">list</button>
+                </div>
+            </div>
+        </div>*@
     </div>
+    <table class="table table-striped table-bordered">
+        <thead class="thin-border-bottom">
+            <tr>
+                <th style="text-align:center" colspan="2" width="120px">
+                    <i class="ace-icon fa fa-clock-o"></i>
+                    Ngày Tháng
+                </th>
+                <th style="text-align:center" class="hidden-480">
+                    <i class="ace-icon fa fa-user"></i>
+                    <span> Nội Dung Công Việc</span>
+                </th>
+                <th class="stetablehi">
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                    Chuẩn Bị
+                </th>
+                <th class="stetable">
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                    Thành Phần Tham Dự
+                </th>
+                <th style="text-align:center" class="hidden-480" width="120px">
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                    Địa Điểm
+                </th>
+                <th class="stetablehi">
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                    Chủ Trì
+                </th>
+            </tr>
+        </thead>
+        <!---->
+        <tbody ng-repeat="n in [].constructor(7) track by $index">
+            <tr>
+                <td ng-class="checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index])? 'alert-danger':''" style="vertical-align: middle; text-align: center;" rowspan="3" class="" width="80px">
+                    <!----><span ng-if="!(checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index]))" ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'EEEE'" class="" style="">Thứ Hai</span><!----><br>
+                    <!---->
+                    <span ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'dd-MM'">31-05</span>
+                </td>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Sáng
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventAM[$index][0])">
+                        <!----><span ng-if="lichtong.DuLieu.listEventAM[$index][0].ID" ng-bind="((lichtong.DuLieu.listEventAM[$index][0].StartHour+':'+lichtong.DuLieu.listEventAM[$index][0].StartMinute) |date:'HH:mm') +' '+ (lichtong.DuLieu.listEventAM[$index][0].Name)" class="" style="">9:0 P.TGĐ Bùi Thanh Giang họp&nbsp; HĐQT Công ty CP ĐT&amp;KDNS Sài Gòn (SWIC)</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].OtherMeetingRoom">Đơn vị</span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+            <tr>
+                <td style="vertical-align : middle;text-align:center;" rowspan="2" width="40px">
+                    Chiều
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventPM[$index][0])">
+                        <!----><span ng-if="lichtong.DuLieu.listEventPM[$index][0].ID" ng-bind="((lichtong.DuLieu.listEventPM[$index][0].StartHour+':'+lichtong.DuLieu.listEventPM[$index][0].StartMinute) |date:'HH:mm') +' '+ (lichtong.DuLieu.listEventPM[$index][0].Name)" class="" style="">14:0 Chủ tịch HĐTV, Ban Tổng Giám đốc họp nghe báo cáo tình hình thực hiện dự án Giảm thất thoát nước; tăng cường, mở rộng mạng lưới cấp nước và tăng cường thể chế SAWACO. Mời cùng dự: Giám đốc Ban QLDA ADB</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].OtherMeetingRoom">UBNDTP</span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+            <tr ng-repeat="item in lichtong.DuLieu.listEventPM[$index].slice(1)" class="" style="">
+                <td>
+                    <a href="#" ng-click="chitiettong(item)">
+                        <!----><span ng-if="item.ID" ng-bind="((item.StartHour+':'+item.StartMinute) |date:'HH:mm')+' '+ (item.Name)">15:0 Phó Bí thư Thường trực Đảng ủy TCT dự họp BCH Đảng bộ Xí nghiệp Cấp nước Sinh hoạt Nông thôn định kỳ tháng 6/2021. Thành phần tham dự: theo thư mời</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="item.MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="item.OtherMeetingRoom">Đơn vị</span></td>
+                <td class="stetablehi"></td>
+            </tr><!---->
+        </tbody><!---->
+        <tbody ng-repeat="n in [].constructor(7) track by $index">
+            <tr>
+                <td ng-class="checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index])? 'alert-danger':''" style="vertical-align : middle;text-align:center;" rowspan="2" class="alert-danger" width="80px">
+                    <!----><br>
+                    <!----><span ng-if="(checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index]))" style="">Hôm nay</span><!---->
+                    <span ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'dd-MM'">01-06</span>
+                </td>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Sáng
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventAM[$index][0])">
+                        <!----><span ng-if="lichtong.DuLieu.listEventAM[$index][0].ID" ng-bind="((lichtong.DuLieu.listEventAM[$index][0].StartHour+':'+lichtong.DuLieu.listEventAM[$index][0].StartMinute) |date:'HH:mm') +' '+ (lichtong.DuLieu.listEventAM[$index][0].Name)" class="" style="">9:0 Hội ý Thường trực Đảng ủy Tổng Công ty lần thứ 17 .&nbsp;Thành phần tham dự: ông Dương Hồng Nhân, ông Trần QuangMinh, ông Lý Bửu Nghĩa, Bà Nguyễn Thị Kiều Nguyệt, ông Vương Vũ</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+            <tr>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Chiều
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventPM[$index][0])">
+                        <!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+        </tbody><!---->
+        <tbody ng-repeat="n in [].constructor(7) track by $index">
+            <tr>
+                <td ng-class="checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index])? 'alert-danger':''" style="vertical-align: middle; text-align: center;" rowspan="2" class="" width="80px">
+                    <!----><span ng-if="!(checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index]))" ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'EEEE'" class="" style="">Thứ Tư</span><!----><br>
+                    <!---->
+                    <span ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'dd-MM'">02-06</span>
+                </td>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Sáng
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventAM[$index][0])">
+                        <!----><span ng-if="lichtong.DuLieu.listEventAM[$index][0].ID" ng-bind="((lichtong.DuLieu.listEventAM[$index][0].StartHour+':'+lichtong.DuLieu.listEventAM[$index][0].StartMinute) |date:'HH:mm') +' '+ (lichtong.DuLieu.listEventAM[$index][0].Name)" class="" style="">8:30 Ban Tổng Giám đốc họp giao ban tháng 05/2021. Mời dự: Bí thư Đảng ủy/Chủ tịch HĐTV, VP TCT, các Phòng TCNS, Pháp chế, KTTC, KHĐT, KTCN, CNTT, KDKDKH, &nbsp;GTTN, QLCLN, Ban KTNB, Ban QLDA: ADB, Cấp nước, Sài Gòn, Hạ tầng cấp nước</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].OtherMeetingRoom">Hội trường toà nhà mới - lầu 1</span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+            <tr>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Chiều
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventPM[$index][0])">
+                        <!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+        </tbody><!---->
+        <tbody ng-repeat="n in [].constructor(7) track by $index">
+            <tr>
+                <td ng-class="checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index])? 'alert-danger':''" style="vertical-align: middle; text-align: center;" rowspan="2" class="" width="80px">
+                    <!----><span ng-if="!(checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index]))" ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'EEEE'" class="" style="">Thứ Năm</span><!----><br>
+                    <!---->
+                    <span ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'dd-MM'">03-06</span>
+                </td>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Sáng
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventAM[$index][0])">
+                        <!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+            <tr>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Chiều
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventPM[$index][0])">
+                        <!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+        </tbody><!---->
+        <tbody ng-repeat="n in [].constructor(7) track by $index">
+            <tr>
+                <td ng-class="checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index])? 'alert-danger':''" style="vertical-align: middle; text-align: center;" rowspan="2" class="" width="80px">
+                    <!----><span ng-if="!(checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index]))" ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'EEEE'" class="" style="">Thứ Sáu</span><!----><br>
+                    <!---->
+                    <span ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'dd-MM'">04-06</span>
+                </td>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Sáng
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventAM[$index][0])">
+                        <!----><span ng-if="lichtong.DuLieu.listEventAM[$index][0].ID" ng-bind="((lichtong.DuLieu.listEventAM[$index][0].StartHour+':'+lichtong.DuLieu.listEventAM[$index][0].StartMinute) |date:'HH:mm') +' '+ (lichtong.DuLieu.listEventAM[$index][0].Name)" class="" style="">8:30 Tổng Giám đốc, Phó Bí Thư TT Đảng ủy, P.TGĐ Đặng Đức Hiền dự Đại hội cổ đông thường niên năm 2021 Cty CPCN Trung An</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].MeetingParticipants">theo thư mời</span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].OtherMeetingRoom">Đơn vị </span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+            <tr>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Chiều
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventPM[$index][0])">
+                        <!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+        </tbody><!---->
+        <tbody ng-repeat="n in [].constructor(7) track by $index">
+            <tr>
+                <td ng-class="checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index])? 'alert-danger':''" style="vertical-align: middle; text-align: center;" rowspan="4" class="" width="80px">
+                    <!----><span ng-if="!(checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index]))" ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'EEEE'" class="" style="">Thứ Bảy</span><!----><br>
+                    <!---->
+                    <span ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'dd-MM'">05-06</span>
+                </td>
+                <td style="vertical-align : middle;text-align:center;" rowspan="3" width="40px">
+                    Sáng
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventAM[$index][0])">
+                        <!----><span ng-if="lichtong.DuLieu.listEventAM[$index][0].ID" ng-bind="((lichtong.DuLieu.listEventAM[$index][0].StartHour+':'+lichtong.DuLieu.listEventAM[$index][0].StartMinute) |date:'HH:mm') +' '+ (lichtong.DuLieu.listEventAM[$index][0].Name)" class="" style="">0:0 Trực Ban lãnh đạo</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+            <tr ng-repeat="item in lichtong.DuLieu.listEventAM[$index].slice(1)" class="" style="">
+                <td>
+                    <a href="#" ng-click="chitiettong(item)">
+                        <!----><span ng-if="item.ID" ng-bind="((item.StartHour+':'+item.StartMinute) |date:'HH:mm')+' '+ (item.Name)">0:0 Trực lái xe:&nbsp; Nhân sự: Ông&nbsp; Phan Minh Nhựt</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="item.MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="item.OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr><!---->
+            <tr ng-repeat="item in lichtong.DuLieu.listEventAM[$index].slice(1)" class="">
+                <td>
+                    <a href="#" ng-click="chitiettong(item)">
+                        <!----><span ng-if="item.ID" ng-bind="((item.StartHour+':'+item.StartMinute) |date:'HH:mm')+' '+ (item.Name)">8:0 Trực cán bộ&nbsp;</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="item.MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="item.OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr><!---->
+            <tr>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Chiều
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventPM[$index][0])">
+                        <!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+        </tbody><!---->
+        <tbody ng-repeat="n in [].constructor(7) track by $index">
+            <tr>
+                <td ng-class="checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index])? 'alert-danger':''" style="vertical-align: middle; text-align: center;" rowspan="3" class="" width="80px">
+                    <!----><span ng-if="!(checkngayhientai(lichtong.DuLieu.firstlastDayOfWeek2[$index]))" ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'EEEE'" class="" style="">Chủ Nhật</span><!----><br>
+                    <!---->
+                    <span ng-bind="lichtong.DuLieu.firstlastDayOfWeek2[$index] | date:'dd-MM'">06-06</span>
+                </td>
+                <td style="vertical-align : middle;text-align:center;" rowspan="2" width="40px">
+                    Sáng
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventAM[$index][0])">
+                        <!----><span ng-if="lichtong.DuLieu.listEventAM[$index][0].ID" ng-bind="((lichtong.DuLieu.listEventAM[$index][0].StartHour+':'+lichtong.DuLieu.listEventAM[$index][0].StartMinute) |date:'HH:mm') +' '+ (lichtong.DuLieu.listEventAM[$index][0].Name)" class="" style="">0:0 Trực Ban lãnh đạo</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventAM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+            <tr ng-repeat="item in lichtong.DuLieu.listEventAM[$index].slice(1)" class="" style="">
+                <td>
+                    <a href="#" ng-click="chitiettong(item)">
+                        <!----><span ng-if="item.ID" ng-bind="((item.StartHour+':'+item.StartMinute) |date:'HH:mm')+' '+ (item.Name)">0:0 Trực lái xe:&nbsp; Nhân sự: Ông&nbsp; Lê Quang Nhiều</span><!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="item.MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="item.OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr><!---->
+            <tr>
+                <td style="vertical-align : middle;text-align:center;" rowspan="1" width="40px">
+                    Chiều
+                </td>
+                <td>
+                    <a href="#" ng-click="chitiettong(lichtong.DuLieu.listEventPM[$index][0])">
+                        <!---->
+                    </a>
+                </td>
+                <td class="stetablehi"></td>
+                <td class="stetable"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].MeetingParticipants"></span></td>
+                <td style="text-align:center" class="hidden-480" width="120px"><span ng-bind="lichtong.DuLieu.listEventPM[$index][0].OtherMeetingRoom"></span></td>
+                <td class="stetablehi"></td>
+            </tr>
+            <!---->
+        </tbody><!---->
+    </table>
 </div>
 
 @section Scripts{
-    <script src="./Assets/bootbox/bootbox.all.js"></script>
-    <script src="./Assets/fullcalendar/main.js"></script>
-    <script src="./Assets/pages/calendar/page-script.js"></script>
+    <script src="~/Assets/vpdt/fullCalendar/fullcalendar.min.js"></script>
+    <script src="~/Assets/vpdt/lich2/locale-all.js"></script>
+    <script src="~/Assets/vpdt/angular-locale_vi-vn.js"></script>
+    <script src="~/Assets/vpdt/fullCalendar/angular-fullcalendar.js"></script>
 }
