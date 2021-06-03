@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <base href="../" />
 
-    <title>Dashboard - Ace Admin</title>
+    <title>MedlineWorld</title>
     <!-- include common vendor stylesheets & fontawesome -->
     <link rel="stylesheet" type="text/css" href="./Assets/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="./Assets/fortawesome/fontawesome-free/css/fontawesome.css">
@@ -568,23 +568,17 @@
 
 
                             <li class="nav-item active">
-
                                 <a href="@Url.Action("Index","Home")" class="nav-link">
                                     <i class="nav-icon fa fa-home"></i>
                                     <span class="nav-text fadeable">
                                         <span>Home</span>
                                     </span>
-
-
                                 </a>
-
                                 <b class="sub-arrow"></b>
-
                             </li>
 
 
                             <li class="nav-item">
-
                                 <a href="#" class="nav-link dropdown-toggle collapsed">
                                     <i class="nav-icon fa fa-calendar-alt"></i>
                                     <span class="nav-text fadeable">
@@ -620,6 +614,37 @@
 
                                         <li class="nav-item">
                                             <a href="@Url.Action("Manage","Calendar")" class="nav-link">
+                                                <span class="nav-text">
+                                                    <span>Manage</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <b class="sub-arrow"></b>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link dropdown-toggle collapsed">
+                                    <i class="nav-icon fa fa-file-alt"></i>
+                                    <span class="nav-text fadeable">
+                                        <span>Document</span>
+                                    </span>
+                                    <b class="caret fa fa-angle-left rt-n90"></b>
+                                </a>
+
+                                <div class="hideable submenu collapse">
+                                    <ul class="submenu-inner">
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index","Document")" class="nav-link">
+                                                <span class="nav-text">
+                                                    <span>List</span>
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Manage","Document")" class="nav-link">
                                                 <span class="nav-text">
                                                     <span>Manage</span>
                                                 </span>

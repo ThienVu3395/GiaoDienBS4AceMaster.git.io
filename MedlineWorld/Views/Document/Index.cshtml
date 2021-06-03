@@ -1,0 +1,274 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" type="text/css" href="./Assets/jqtree/jqtree.css">
+    <link rel="stylesheet" type="text/css" href="./Assets/bootstrap-table/dist/bootstrap-table.css">
+}
+
+<div class="page-header border-0">
+    <h1 class="page-title text-primary-d2">
+        Document
+        <small class="page-info text-secondary-d3">
+            <i class="fa fa-angle-double-right text-80"></i>
+            with company's and private documents
+        </small>
+    </h1>
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-md-3 mt-3 mt-md-0">
+        <div class="card bcard h-auto border-0">
+            <div class="card-header bgc-default-d3">
+                <h3 class="card-title text-130 text-white">
+                    Categories
+                    @*<span class="text-75 d-none" id="has-drag-drop">(with drag & drop)</span>*@
+                </h3>
+            </div>
+
+            <div class="card-body bgc-white border-1 border-t-0 brc-default-m2">
+                <div class="jqtree" id="id-jqtree-categories"></div>
+                @*<div class="jqtree tree-dotted" id="id-jqtree-files"></div>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-9 mt-9 mt-md-0">
+        <div class="card-header bgc-primary-d1 text-white border-0">
+            <h3 class="card-title text-130 text-white">
+                Vehicles > Cars > SUV
+            </h3>
+            <div class="columns columns-right btn-group float-right">
+                <button type="button" class="btn btn-bold btn-outline-white btn-text-white btn-h-text-red btn-a-warning radius-round">
+                    New Document
+                </button>
+
+                <button type="button" class="btn btn-bold btn-outline-white btn-text-white btn-h-text-red btn-a-warning radius-round">
+                    New Group
+                </button>
+
+                <button type="button" class="btn btn-bold btn-outline-white btn-text-white btn-h-text-red btn-a-warning radius-round">
+                    Edit Group
+                </button>
+            </div>
+        </div>
+        <div class="card-body p-0 border-x-1 border-b-1 brc-default-m4 radius-0 overflow-hidden">
+            <div class="bootstrap-table bootstrap4">
+                <div class="fixed-table-toolbar">
+                    <div class="columns columns-right btn-group float-right">
+                        <div class="keep-open btn-group">
+                            <button class="btn btn-outline-default bgc-white btn-h-light-primary btn-a-outline-primary py-1 px-25 text-95 dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-th-list text-orange-d1"></i> Order By 
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" style="">
+                                <label class="dropdown-item dropdown-item-marker">
+                                    <input type="radio" name="option" class="mr-1">
+                                    Updated Date Descending
+                                </label>
+
+                                <label class="dropdown-item dropdown-item-marker">
+                                    <input type="radio" name="option" class="mr-1">
+                                    Updated Date Ascending
+                                </label>
+
+                                <label class="dropdown-item dropdown-item-marker">
+                                    <input type="radio" name="option" class="mr-1">
+                                    Created Date Descending
+                                </label>
+
+                                <label class="dropdown-item dropdown-item-marker">
+                                    <input type="radio" name="option" class="mr-1">
+                                    Created Date Ascending
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="float-left search btn-group">
+                        <input class="form-control search-input" type="search" placeholder="Search" autocomplete="off" style="margin-right:8px">
+                        <div id="table-toolbar">
+                            <button class="btn btn-xs p-2 mr-2 bgc-white btn-info radius-3px">
+                                <i class="fa fa-search text-125 mx-2px text-blue"></i>
+                            </button>
+                        </div>
+                        <div id="table-toolbar">
+                            <button class="btn btn-xs p-2 mr-2 bgc-white btn-info radius-3px">
+                                <i class="fa fa-undo text-125 mx-2px text-blue"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fixed-table-container" style="padding-bottom: 0px;">
+                    <div class="fixed-table-header" style="display: none;"><table></table></div>
+                    <div class="fixed-table-body">
+                        <div class="fixed-table-loading table table-bordered table-hover" style="top: 46.6167px;">
+                            <span class="loading-wrap">
+                                <span class="loading-text">Loading, please wait</span>
+                                <span class="animation-wrap"><span class="animation-dot"></span></span>
+                            </span>
+                        </div>
+                        <table class="table text-dark-m2 text-95 bgc-white ml-n1px table-bordered table-hover" id="table">
+                            <thead class="bgc-white text-grey text-uppercase text-80">
+                                <tr>
+                                    <th style="" data-field="id"><div class="th-inner" @*class="th-inner sortable both*@>Folder/File Name</div>@*<div class="fht-cell"></div>*@</th>
+                                    <th style="" data-field="name"><div class="th-inner">Created Date</div></th>
+                                    <th style="" data-field="name"><div class="th-inner">Created By</div></th>
+                                    <th style="" data-field="price"><div class="th-inner">Updated Date</div></th>
+                                    <th style="" data-field="price"><div class="th-inner">Updated By</div></th>
+                                    @*<th style="" data-field="tools"><div class="th-inner">Locked Date</div></th>
+                                    <th style="" data-field="tools"><div class="th-inner">Locked By</div></th>*@
+                                    @*<th style="text-align: center; width: 140px;" data-field="tools">
+                                        <div class="th-inner">
+                                            <i class="fa fa-cog text-secondary-d1 text-130"></i>
+                                        </div>
+                                    </th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-index="0" data-has-detail-view="true">
+                                    <td><i class="fa fa-folder text-orange-d1 node-icon closed-icon"></i> Services</td>
+                                    <td>03/06/2021</td>
+                                    <td>Tri Tran</td>
+                                    <td>04/06/2021</td>
+                                    <td>Tri Tran</td>
+                                    @*<td>04/06/2021</td>
+                                    <td>Tri Tran</td>*@
+                                    @*<td style="text-align: center; width: 140px;">
+                                        <div class="action-buttons">
+                                            <a class="text-blue mx-1" href="#">
+                                                <i class="fa fa-search-plus text-105"></i>
+                                            </a>
+                                            <a class="text-success mx-1" href="#">
+                                                <i class="fa fa-pencil-alt text-105"></i>
+                                            </a>
+                                            <a class="text-danger-m1 mx-1" href="#">
+                                                <i class="fa fa-trash-alt text-105"></i>
+                                            </a>
+                                        </div>
+                                    </td>*@
+                                </tr>
+
+                                <tr data-index="0" data-has-detail-view="true">
+                                    <td><i class="fa fa-folder text-orange-d1 node-icon closed-icon"></i> Personals</td>
+                                    <td>03/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    <td>04/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    @*<td></td>
+                                    <td></td>*@
+                                </tr>
+
+                                <tr data-index="0" data-has-detail-view="true">
+                                    <td><i class="far fa-file-pdf text-125 text-danger-m1 node-icon"></i> test.pdf</td>
+                                    <td>03/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    <td>04/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    @*<td>04/06/2021</td>
+                                    <td>Tri Tran</td>*@
+                                </tr>
+
+                                <tr data-index="0" data-has-detail-view="true">
+                                    <td><i class="far fa-file-archive text-125 text-purple-m1 node-icon"></i> test.zip</td>
+                                    <td>03/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    <td>04/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    @*<td></td>
+                                    <td></td>*@
+                                </tr>
+
+                                <tr data-index="0" data-has-detail-view="true">
+                                    <td><i class="fa fa-file-word text-blue-m2 node-icon"></i> test.doc</td>
+                                    <td>03/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    <td>04/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    @*<td>04/06/2021</td>
+                                    <td>Tri Tran</td>*@
+                                </tr>
+
+                                <tr data-index="0" data-has-detail-view="true">
+                                    <td><i class="fa fa-file-excel text-green node-icon closed-icon"></i> test.excel</td>
+                                    <td>03/06/2021</td>
+                                    <td>Tri Tran</td>
+                                    <td>04/06/2021</td>
+                                    <td>Tri Tran</td>
+                                    @*<td>04/06/2021</td>
+                                    <td>Tri Tran</td>*@
+                                </tr>
+
+                                <tr data-index="0" data-has-detail-view="true">
+                                    <td><i class="fa fa-file text-blue-m2 node-icon"></i> test.abc</td>
+                                    <td>03/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    <td>04/06/2021</td>
+                                    <td>Pete Tran</td>
+                                    @*<td>04/06/2021</td>
+                                    <td>Tri Tran</td>*@
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="fixed-table-footer"><table><thead><tr></tr></thead></table></div>
+                </div>
+                <div class="fixed-table-pagination">
+                    <div class="float-left pagination-detail">
+                        <span class="pagination-info">
+                            Total : <span style="font-weight:bold">100</span> items
+                        </span>
+                        @*<span class="page-list">
+                                <span class="btn-group dropdown dropup">
+                                    <button class="btn btn-outline-default bgc-white btn-h-light-primary btn-a-outline-primary py-1 px-25 text-95 dropdown-toggle" type="button" data-toggle="dropdown">
+                                        <span class="page-size">
+                                            10
+                                        </span>
+                                        <span class="caret fa fa-caret-down"></span>
+                                    </button>
+                                    <div class="dropdown-menu"><a class="dropdown-item active" href="#">10</a><a class="dropdown-item " href="#">25</a><a class="dropdown-item " href="#">50</a></div>
+                                </span> rows per page
+                            </span>*@
+                    </div>
+                    <div class="float-right pagination">
+                        <ul class="pagination">
+                            <li class="page-item page-pre disabled">
+                                <a class="page-link" aria-label="previous page" href="javascript:void(0)">‹</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" aria-label="to page 1" href="javascript:void(0)">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" aria-label="to page 2" href="javascript:void(0)">2</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" aria-label="to page 3" href="javascript:void(0)">3</a></li>
+                            <li class="page-item"><a class="page-link" aria-label="to page 4" href="javascript:void(0)">4</a></li>
+                            <li class="page-item page-next">
+                                <a class="page-link" aria-label="next page" href="javascript:void(0)">›</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div><div class="clearfix"></div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="./Assets/jqtree/tree.jquery.js"></script>
+    <script src="./Assets/pages/treeview/page-script.js"></script>
+    <script src="./Assets/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="./Assets/tableexport.jquery.plugin/libs/FileSaver/FileSaver.min.js"></script>
+    <script src="./Assets/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="./Assets/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+    <script src="./Assets/bootstrap-table/dist/extensions/print/bootstrap-table-print.js"></script>
+    <script src="./Assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.js"></script>
+}
+
+
